@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.views import login
 from apps.blog.models import Post
-from apps.blog.forms import PostForm
+from apps.blog.forms import PostForm, PostFormCrispy
 
 def home(request):
     posts = Post.objects.all()[:2]
@@ -28,6 +28,7 @@ def posts(request):
 def create_post(request):
 
     form = PostForm(request.POST or None)
+    form_crispy = PostFormCrispy(request.POST or None)
     if form.is_valid(): # All validation rules pass
         user = request.user
         post = form.save(commit=False)
@@ -35,7 +36,7 @@ def create_post(request):
         post.save()
         return redirect(reverse("blog_posts"))
 
-    return render(request, "blog/create_post.html", {'form': form})
+    return render(request, "blog/create_post.html", {'form': form, 'form_crispy': form_crispy })
 
 
 def edit_post(request, post_id):

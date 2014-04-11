@@ -20,5 +20,7 @@ class Comment(models.Model):
     post = models.ForeignKey(Post)
     content = models.CharField(blank=False, max_length=100)
 
+    def __unicode__(self):
+        return "Comment pk=%s for Post pk=%s" % (self.pk, self.post.pk)
 
 

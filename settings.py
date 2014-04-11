@@ -151,9 +151,10 @@ INSTALLED_APPS = (
     'apps.core',
     'apps.blog',
     'south', # Migraciones
-    'debug_toolbar', # Django-debug-toolbar
+    'debug_toolbar', # Django-debug-toolbar,
+    'crispy_forms',
 )
-
+CRISPY_TEMPLATE_PACK = 'bootstrap'
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.

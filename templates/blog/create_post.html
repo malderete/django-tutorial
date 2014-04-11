@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block sub_menu %}
 <ul>
 	<li><a href="{% url blog_home %}">&lt; Back</a></li>	
@@ -19,6 +21,10 @@
 	    {% endcomment %}
 	    <input type="submit" value="Create"/>
 	</form>
+</div>
+
+<div>
+    {% crispy form_crispy %}
 </div>
 
 {% endblock %}
